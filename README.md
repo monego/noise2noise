@@ -78,11 +78,9 @@ arbitrary noise models can be set for source images, target images, and validato
 Default values are taken from the experiment in [1].
 
 - Gaussian noise
-  - gaussian,min_stddev,max_stddev (e.g. gaussian,0,50)
+  - gaussian,stddev (e.g. gaussian,0,15)
 - Clean target
   - clean
-- Text insertion
-  - text,min_occupancy,max_occupancy (e.g. text,0,50)
 - Random-valued impulse noise
   - impulse,min_occupancy,max_occupancy (e.g. impulse,0,50)
 
@@ -140,7 +138,7 @@ optional arguments:
   --weight_file WEIGHT_FILE
                         trained weight file (default: None)
   --test_noise_model TEST_NOISE_MODEL
-                        noise model for test images (default: gaussian,25,25)
+                        noise model for test images (default: gaussian,0.15)
   --output_dir OUTPUT_DIR
                         if set, save resulting images otherwise show result
                         using imshow (default: None)

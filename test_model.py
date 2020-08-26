@@ -15,7 +15,7 @@ def get_args():
                         help="model architecture ('srresnet' or 'unet')")
     parser.add_argument("--weight_file", type=str, required=True,
                         help="trained weight file")
-    parser.add_argument("--test_noise_model", type=str, default="gaussian,25,25",
+    parser.add_argument("--test_noise_model", type=str, default="gaussian,0.15",
                         help="noise model for test images")
     parser.add_argument("--output_dir", type=str, default=None,
                         help="if set, save resulting images otherwise show result using imshow")

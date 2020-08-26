@@ -1,21 +1,17 @@
 import argparse
 import numpy as np
+import skimage.util
 
 
-def get_noise_model(noise_type="gaussian,0,50"):
+def get_noise_model(noise_type="gaussian,0.15"):
     tokens = noise_type.split(sep=",")
 
     if tokens[0] == "gaussian":
-        min_stddev = int(tokens[1])
-        max_stddev = int(tokens[2])
 
         def gaussian_noise(img):
-            noise_img = img.astype(np.float)
-            stddev = np.random.uniform(min_stddev, max_stddev)
-            noise = np.random.randn(*img.shape) * stddev
-            noise_img += noise
-            noise_img = np.clip(noise_img, 0, 255).astype(np.uint8)
-            return noise_img
+            noise_img = skimage.util.random_noise(img, var=float(tokens[1])**2)
+            noise_img *= 255
+            return noise_img.astype('uint8')
         return gaussian_noise
     elif tokens[0] == "clean":
         return lambda img: img
